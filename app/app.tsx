@@ -1,19 +1,19 @@
 // App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginButton from './Spotify/LoginButton';
-import Callback from './Spotify/Callback';
-import SpotifyData from './Spotify/SpotifyData';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Layout from './(tabs)/_layout'; // Ensure this import is correct
+import LogSuccess from './LogSuccess'; // Ensure this import is correct
+
+const Stack = createStackNavigator();
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginButton />} />
-        <Route path="/callback" element={<Callback />} />
-        <Route path="/data" element={<SpotifyData />} />
-      </Routes>
-    </Router>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Layout" component={Layout} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

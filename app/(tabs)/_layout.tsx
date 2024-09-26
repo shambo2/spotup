@@ -1,11 +1,11 @@
+// _layout.tsx
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
 import { useColorScheme } from 'react-native';
 import { Colors } from '@/constants/Colors';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import LogSuccess from '../LogSuccess';
-// import Login from '../screens/Login'; // Assuming you have a Login component
+import Home from '../Home'; // Ensure this import is correct
 
 const Tab = createBottomTabNavigator();
 
@@ -13,23 +13,23 @@ const Layout: React.FC = () => {
   const colorScheme = useColorScheme();
 
   return (
-      <Tab.Navigator
-        screenOptions={{
-          tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-          headerShown: false,
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+          ),
         }}
-      >
-        <Tab.Screen
-          name="LogSuccess"
-          component={LogSuccess}
-          options={{
-            title: 'Welcome',
-            tabBarIcon: ({ color, focused }) =>   (
-              <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
+      />
+    </Tab.Navigator>
   );
 };
 
