@@ -31,6 +31,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ddbc102f-af9c-4afc-9e7d-b0899b7cb6c3"
+      }
+    },
+    "owner": "alired12"
   }
 }
